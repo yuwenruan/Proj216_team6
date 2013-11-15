@@ -1,0 +1,107 @@
+Action items:
+1. review slides for presentation and give feedback;
+2.Do your part of coding(find your name on the top of each .php file name), including documentation;
+3.backup your work in zip file and send to Paul until the version control system is ready;
+
+At the top of each file, include your name, date, project description and what the file does in brief description.
+state other files included in the php file and put it all to header.php
+
+
+Parker
+index.php(Home page):
+		slide show;
+		package list with order button;
+
+
+Parker
+Header.php: 	
+		sign in link;
+		registration link;
+		replace when customer or agent sign in with sign out;
+		logo image;
+		start session;
+
+Yu Wen
+Menu.php:
+		Home|contact|package
+		admin role: add menu for agent management, customer management, report generation, suppliers management, booking for customer;
+
+Paul
+contact.php:
+		list all agencies and agents information;
+		* email form
+
+Parker
+packages.php:
+		show all packages with order button;
+		* add search button to search specific package with condition;
+
+Yu Wen
+login.php:
+		form
+		user name:
+		password:
+		login     registe
+		/*set session value*/
+
+
+George
+registe.php:
+		form(customer registration form)
+		user ID:
+		Password:
+		re-enter Password:
+		
+		customer Information input area from table: customers
+
+		registration
+		/*successful registration if the order is not found go to index.php, otherwise go to payment.php*/
+		/*set session value*/
+
+
+Paul
+payment.php:
+		customer name:
+		package name:
+		
+
+		bank information:
+		expire date:
+
+		code:
+		
+		pay(button)
+		/*check session value*/
+	
+
+$_session['login']='agent';	
+$_session['login']='customer';
+$_session['login']='admin'; //save it for later design;
+
+$_session['order']=$packageid;
+
+/*The part below is extra file that nice to have*/
+agent-management.php:
+		add new agent;
+		delete agent;
+		modify agent information;
+		
+customer-management.php:
+		add new customer;
+		delete customer;
+		modify customer information;
+		booking for customer;
+
+supplier-management.php:
+		add new supplier;
+		delete supplier;
+		manage packages;
+		modify supplier;
+
+report.php:
+		commission report;
+		sales report;
+		* simple report from static sql
+
+
+		
