@@ -6,4 +6,4 @@ Gather all works from weekend and integrate into system and test
 
 After we finish our part's of code, we will send Paul our code (zipped).
 
-When we send Paul M (dont want you to confuse him with me!!) our code, we will mention which page is changed.
+When we send Paul our code, we will mention which page is changed.
