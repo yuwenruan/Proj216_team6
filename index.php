@@ -8,7 +8,7 @@ index.php
 
 <html>
 <head>
-	<title>Online Travel Booking and Management System</title>
+	<title>Online Travel Booking and Management System-home page</title>
 	<link href="./css/bk.css" rel="stylesheet" type="text/css">
 </head>
 <body>
