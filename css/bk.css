@@ -4,18 +4,18 @@
 }
 
 header {
-	height: 150px;
+	height: 180px;
 	background: #CFCBC4;
 }
 
 #menu {	
-	/*clear: both;*/
+	clear: both;
 	height: 50px;
 	background: #0D1FA6;
 }
 #submenu {
 	clear: both;
-	height: 80px;
+	height: 50px;
 	background: #0D1FA6;
 }
 

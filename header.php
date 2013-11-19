@@ -8,7 +8,7 @@ It sets up the login buttons based on session variables.
 -->
 
 		<header> 
-			<div id="logo" ><img src="./images/banner.png" ></div>
+			<div id="logo" ><img src="./images/banner.png" height="180px"></div>
 			<div id="buttons" style="float:right;">
 				<a href="login.php" id="loginButton"><img src="./images/login.png"></a>
 				<a href="register.php" id="signupButton"><img src="./images/signup.png"></a>
