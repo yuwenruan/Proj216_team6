@@ -13,7 +13,11 @@ header {
 	height: 50px;
 	background: #0D1FA6;
 }
-
+#submenu {
+	clear: both;
+	height: 80px;
+	background: #0D1FA6;
+}
 
 #content {
 	height: auto;
