@@ -63,6 +63,7 @@
 					
 					if (md5(trim($users['password']))==$pwd) {
 						$_SESSION['login']=$row['role'];
+						if ($row['role']=='customer') $_SESSION['customerId']=$row['roleId'];
 						header("Location: $theurl");
 					}
 					else

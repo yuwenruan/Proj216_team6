@@ -4,7 +4,7 @@
 }
 
 header {
-	height: 150px;
+	height: 200px;
 	background: #CFCBC4;
 }
 
@@ -14,6 +14,11 @@ header {
 	background: #0D1FA6;
 }
 
+#submenu {
+	clear: both;
+	height: 80px;
+	background: #0D1FA6;
+}
 
 #content {
 	height: auto;
@@ -30,7 +35,7 @@ footer {
 
 #logo {
 	float:left;
-	height:100px;
+	height:200px;
 }
 
 #banner {
@@ -50,21 +55,9 @@ footer {
 	margin-left:70px;
 	float:left;
 }
+
 a {
 	color: #FFFFFF;
     text-decoration: none;
 }
 
-table{
-	background-color:#F5F5FA;
-	width:100%;
-	padding-bottom:30px;
-}
-
-td{
-	padding:5px;
-}
-
-td.titleRow{
-	background-color:#b9bfec;
-}

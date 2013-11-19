@@ -17,8 +17,10 @@ index.php
 	include_once("header.php");	
 ?>
 <div id="content"> 
+
 </div>
 <?php
+//print("please print session customer id ".$_SESSION['customerId']);
 	include_once("footer.php");
 ?>
 		</div>

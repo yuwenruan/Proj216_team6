@@ -1,0 +1,30 @@
+#imageBox{
+	position:relative;
+	width:50%;
+	margin:auto;
+}
+
+#imageS{
+	width:100%;
+}
+
+#linkBox{
+	margin:auto;
+	width:100%;
+	height:70px;
+}
+
+.linkP{
+	cursor:pointer;
+}
+
+div.functionClass{
+	position:relative;
+	width:50%;
+	float:left;
+}
+
+#order{
+	float:right;
+	
+}
