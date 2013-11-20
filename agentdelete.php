@@ -21,12 +21,10 @@
 			//delete from agents table
 			$sql_agent="DELETE FROM AGENTS WHERE AgentId='".$id."';";
 			$result=mysql_query($sql_agent);
-			//echo "delete agent:" .$sql_agent."<br>";
 			
 			//delete from users table
-			$sql_user="DELETE FROM USERS WHERE roleid='".$id."' and role='agent';";
+			$sql_user="DELETE FROM USERS WHERE roleId='".$id."' and role='agent';";
 			$result=mysql_query($sql_user);
-			//echo "delete user:" .$sql_user."<br>";
 			//after delete redirect the page to agentmanagement.php
 			header("Location: agentmanagement.php");
 			

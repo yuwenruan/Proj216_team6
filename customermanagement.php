@@ -5,6 +5,7 @@
 	
 	customermanagement.php
 	main page to manage customers
+	show all customers in split pages
 -->
 <!DOCTYPE html>
 <?php
@@ -26,7 +27,7 @@
 	//when agent login, show records of customers, each page show limited records
 	if (isset($_SESSION['login']) && $_SESSION['login']=='agent') {
 		
-		$perpage = 6; 
+		$perpage = 6;  //set 6 records for every page
 		$start = (isset($_GET['id'])) ? $_GET['id'] : 0;
 		
 		//connect to database
@@ -34,7 +35,7 @@
 		$db=mysql_select_db('travelexperts') or die("Could not connect");
 		//total records of agents table
 		$TotalRec = mysql_result(mysql_query("SELECT COUNT(*) FROM customers"), 0);
-		
+		//set limit record for every page
 		$sql_str="SELECT * FROM customers LIMIT $start, $perpage;";
 		
 		$result=mysql_query($sql_str) or die(mysql_error());
@@ -57,6 +58,8 @@
 	</tr>
 	
 <?php
+			//write every record to table
+			//show all customer
 			while ($row=mysql_fetch_assoc($result)){
 				echo "<tr>";
 				foreach ($row as $key=>$value)
@@ -69,8 +72,9 @@
 			}
 			echo "</table>";
 		}
-			
-		if($start == 0) {
+		
+		//print the link for previous page and next page	
+		if($start == 0)	{
 		  echo "Previous Screen";
 		}
 		else	{
@@ -83,12 +87,12 @@
 		else	{
 		  echo "<a style='color:red;' href='customermanagement.php?id=".($start + $perpage)."'>Next Screen</a> "; 
 		}
-		mysql_close($conn);
+		mysql_close($conn); //close database
 	}
 ?>	
 </div>
 <?php
-	include_once("footer.php");
+	include_once("footer.php"); //include footer file 
 ?>
 		</div>
 	</body>

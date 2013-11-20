@@ -4,6 +4,7 @@
 	Date: Nov 14, 2013
 	
 	login.php
+	login page for customer and agent to login in
 	
 -->
 <?php
@@ -13,6 +14,8 @@
 	$url  = $_SERVER['HTTP_HOST'];
 	$url .= $_SERVER['SCRIPT_NAME'];
 	
+	//if order button is presses, after login go to payment.php
+	//otherwise, go to index.php
 	if (isset($_SESSION['order'])) {
 		$packageId=$_SESSION['order'];
 		$theurl="http://".dirname($url)."/payment.php";
