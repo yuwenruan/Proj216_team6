@@ -36,10 +36,12 @@ function displayPackage(){
 	$packagePrice = mysql_query($packagePrice);
 	
 	$date = date("Y-m-d");
-		
+	
 	$rows = mysql_num_rows($packageid);
 		
 	$i=0;
+	
+	print("<table>");
 	
 	while($i < $rows){
 			$idResult = mysql_result($packageid, $i);
@@ -51,13 +53,12 @@ function displayPackage(){
 			
 			if($endResult > $date)
 			{
-				print("<table>");
+				
 				print("<tr>
 						<td class=\"titleRow\">Package Name</td>
-						<td class=\"titleRow\">Number</td>
 						<td class=\"titleRow\">Description</td>
-						<td class=\"titleRow\">Departure Date</td>
-						<td class=\"titleRow\">Return Date</td>
+						<td class=\"titleRow\">Departure Date<br>yyyy/mm/dd</td>
+						<td class=\"titleRow\">Return Date<br>yyyy/mm/dd</td>
 						<td class=\"titleRow\">Price</td>
 						<td class=\"titleRow\">
 							<form action=\"orderButton.php\" method=\"POST\">
@@ -69,31 +70,29 @@ function displayPackage(){
 						{
 							print("<tr>
 							<td>".$nameResult."</td>
-							<td>".$idResult."</td>
 							<td>".$descResult."</td>
 							<td style=\"color:red;\">".$startResult."</td>
 							<td>".$endResult."</td>
-							<td>".$priceResult."</td>
+							<td>".number_format($priceResult,2)."</td>
 							</tr>");
-							print("</table>");
+							
 						}	
 						
 					else
 						{
 							print("<tr>
 							<td>".$nameResult."</td>
-							<td>".$idResult."</td>
 							<td>".$descResult."</td>
 							<td>".$startResult."</td>
 							<td>".$endResult."</td>
-							<td>".$priceResult."</td>
+							<td>".number_format($priceResult,2)."</td>
 							</tr>");
-							print("</table>");
 						}
 			}
-			
 			$i++;
+			
 	}
+	print("</table>");
 }
 	
 ?>
