@@ -12,7 +12,10 @@ customer must be logged in to place an order, login button displayed in included
 	Only packages past the current date are displayed.
 	Function checks if user is logged in before sending them to payment page
 	through orderButton.php.
-*/	
+*/
+
+start_session();
+	
 function displayPackage(){ 
 
 	$dbh = mysql_connect("localhost", "root", "");
