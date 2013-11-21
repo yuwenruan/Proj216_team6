@@ -24,7 +24,7 @@
 	function genSQLUpdate($infor) {
 		$str="";
 		foreach ($infor as $key=>$value) {
-			if ($value!="") 
+			//if ($value!="") 
 				$str .= $key."='".$value."',";
 		}
 		$str=substr($str,0,-1);
@@ -100,11 +100,10 @@
 							// the form is submitted, process the form and update the record
 							if (isset($_POST["submit"])) {
 								if (is_numeric($_GET['id'])) {
-									$show_str=validation($agentRec);
 									if ($show_str==""){
 										$sql_str1=genSQLUpdate($agentRec);
 										$sql_str="UPDATE AGENTS SET ". $sql_str1." WHERE AgentId='".$id."';";
-										//print $sql_str;
+										print $sql_str;
 										$result=mysql_query($sql_str) or die(mysql_error());;
 										if ($result) {
 											$show_str="Update the information successfully";
@@ -114,6 +113,7 @@
 									}
 								}
 								else {
+									//redirect page to agentmanagement.php
 									$show_str="The ID is not valid";
 									header("Location: agentmanagement.php");
 								}
@@ -162,7 +162,6 @@
 										$result1=mysql_query($sql) or die(mysql_error());
 										if ($result1) {
 											$row=mysql_fetch_row($result1);
-											//print_r ($row);
 											//set agentid to users table associated with agent's login user name and password
 											
 											$userRec['roleId']=$row[0];
@@ -172,16 +171,13 @@
 											$sql=genSQLInsert($userRec,"USERS");
 											$result2=mysql_query($sql) or die(mysql_error());
 											if ($result2) {
+												//redirect page to agentmanagement.php
 												$show_str.="<br>New record is added to users table";
 												header("Location: agentmanagement.php");
-											}
-											
+											}											
 										}
 									}
 									else $show_str="Add new record is not successful";
-									
-									
-
 								}
 								$b_add=false;								
 								

@@ -34,8 +34,8 @@
 <div id="submenu"> 
 	<a class="links" href="agentmanagement.php" >Agent Management</a>
 	<a class="links" href="customermanagement.php" >Customer Management</a>
-	<a class="links" href="contact.php" >Supplier Management</a>
-	<a class="links" href="contact.php" >Report Generation</a>
+	<a class="links" href="index.php" >Supplier Management</a>
+	<a class="links" href="report.php" >Report Generation</a>
 </div>	
 <?php
 	}
