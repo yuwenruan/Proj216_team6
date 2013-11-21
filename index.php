@@ -37,8 +37,8 @@ orders can be placed through the slideshow.
 					<img id="slideStopper" class="linkP" onClick="setTimer();" src="images/playSlide.png"></img>
 				</div>
 				<div class="functionClass">
-					<form action="orderButton.php" method="POST" onClick="buttonValue();">
-						<input type="image" src="./images/orderPic.png" id="order" value="" name="order">
+					<form onClick="buttonValue();" action="orderButton.php" method="post">
+						<input type="image" src="./images/orderPic.png" id="order" value="" name="buttonOrder">
 					</form>
 				</div>
 			</div>

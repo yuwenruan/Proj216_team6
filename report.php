@@ -16,7 +16,7 @@
 
 <html>
 <head>
-	<title>Online Travel Booking and Management System-reports</title>
+	<title>Reports-Travel Experts</title>
 	<link href="./css/bk.css" rel="stylesheet" type="text/css">
 </head>
 <body>

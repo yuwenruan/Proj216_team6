@@ -59,7 +59,7 @@
 ?>
 <html>
 	<head>
-		<title>Online Travel Booking and Management System-Agent's record</title>
+		<title>Agent's record-Travel Experts</title>
 		<link href="./css/bk.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>

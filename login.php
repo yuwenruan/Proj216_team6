@@ -16,8 +16,9 @@
 	
 	//if order button is presses, after login go to payment.php
 	//otherwise, go to index.php
-	if (isset($_SESSION['order'])) {
+	if (isset($_SESSION['order'])) {	
 		$packageId=$_SESSION['order'];
+		echo $_SESSION['order'];
 		$theurl="http://".dirname($url)."/payment.php";
 	}
 	else {	
@@ -89,7 +90,7 @@
 
 <html>
 <head>
-	<title>Online Travel Booking and Management System-Login</title>
+	<title>Login-Travel Experts</title>
 	<link href="./css/bk.css" rel="stylesheet" type="text/css">
 </head>
 <body>

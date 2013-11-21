@@ -11,14 +11,10 @@
 <style type="text/css">
 #menu a:hover {
 	color: red;
-	margin-top:-10px;
-	font-weight:bold;
 }
 
 #submenu a:hover {
 	color: red;
-	margin-top:-10px;
-	font-weight:bold;
 }
 
 </style>
