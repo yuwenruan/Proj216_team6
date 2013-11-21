@@ -15,7 +15,7 @@ It sets up the login buttons based on session variables.
 				<a href="logout.php" id="logoutButton"><img src="./images/logout.png"></a>
 			</div>
 			<div id="banner">
-				<h1 id="welcome">Come travel with us</h1>
+				<h1 id="welcome">Welcome to Travel Experts</h1>
 			</div>
 		</header>
 		<?php
@@ -40,5 +40,19 @@ It sets up the login buttons based on session variables.
 			document.getElementById(\"logoutButton\").style.display=\"none\";
 		</script>");
 	}
-
+	//----- Code for checking users table columns - START
+	// Added by George
+	// Notify the user about database update
+	include_once("functions.php");	
+	
+	if(!checkColumns_UsersTable())
+	{
+?>
+		<script language="JavaScript"> 
+			alert('Please Import Database file named "TravelExperts-v2.sql"');
+		</script>	
+<?php		
+	}
+	//----- Code for checking users table columns - END
+	//---------------------------------------------------
 ?>	
