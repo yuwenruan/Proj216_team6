@@ -21,7 +21,7 @@ session_start();
 
 <html>
 <head>
-	<title>Online Travel Booking and Management System</title>
+	<title>Customer Registration - Travel Experts</title>
 	<link href="./css/bk.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -67,6 +67,8 @@ session_start();
 					"CustCity" 		=> "",
 					"CustProv" 		=> "",
 					"CustPostal"	=> "",
+					"CustCountry" 	=> "",
+					"CustHomePhone" => "",
 					"CustBusPhone" 	=> "",
 					"CustEmail" 	=> "",
 					"CustUid" 		=> "",
@@ -120,9 +122,19 @@ session_start();
 			if(filter_var($customerInfo['CustPostal'], FILTER_VALIDATE_REGEXP, 
 					array("options"=>array("regexp"=>"/^[a-z][0-9][a-z]( )?[0-9][a-z][0-9]$/i"))) === false)
 			{
-				$error['CustPostal'] = "Postal Code not in correct format.";
+				$error['CustPostal'] = "Postal Code not in correct format";
 				$isValidForm = false;
 			}
+		}
+		if(empty($customerInfo['CustCountry']))
+		{
+			$error['CustCountry'] = "*Missing*";
+			$isValidForm = false;
+		}
+		if(empty($customerInfo['CustHomePhone']))
+		{
+			$error['CustHomePhone'] = "*Missing*";
+			$isValidForm = false;
 		}
 		if(empty($customerInfo['CustBusPhone']))
 		{
@@ -139,7 +151,7 @@ session_start();
 			if(!filter_var($customerInfo['CustEmail'], FILTER_VALIDATE_EMAIL))
 			{
 				$isValidForm = false;
-				$error['CustEmail'] = "Email is Invalid.";
+				$error['CustEmail'] = "Email is Invalid";
 			}
 		}
 		if(empty($customerInfo['CustUid']))
@@ -162,7 +174,8 @@ session_start();
 		{
 			if($customerInfo['CustPwd'] != $customerInfo['CustConfmPwd'])
 			{
-				$error['CustPwd'] = "Both Password and Re Enter Password should be same.";
+				$error['CustPwd'] = "Mismatch - Re Enter Password";
+				$customerInfo['CustPwd'] = "";
 				$isValidForm = false;
 			}
 		}
@@ -283,15 +296,19 @@ session_start();
 						<tr>
 							<td align="right">Country:</td>
 							<td><input type="text" name="CustCountry" size="25" maxlength="25" 
-									value="<?php echo $customerInfo['CustCountry'];?>"></td>
+									value="<?php echo $customerInfo['CustCountry'];?>">
+								<small><font color="red"><?php echo $error["CustCountry"]; ?></font></small>	
+							</td>
 						</tr>
 						<tr>
 							<td align="right">Home Phone:</td>
 							<td><input type="text" name="CustHomePhone" size="20" maxlength="20" 
-									value="<?php echo $customerInfo['CustHomePhone'];?>"></td>
+									value="<?php echo $customerInfo['CustHomePhone'];?>">
+								<small><font color="red"><?php echo $error["CustHomePhone"]; ?></font></small>	
+							</td>
 						</tr>
 						<tr>
-							<td align="right">Bus Phone:</td>
+							<td align="right">Business Phone:</td>
 							<td><input type="text" name="CustBusPhone" size="20" maxlength="20" 
 									value="<?php echo $customerInfo['CustBusPhone'];?>">
 								<small><font color="red"><?php echo $error["CustBusPhone"]; ?></font></small>	
@@ -305,7 +322,7 @@ session_start();
 							</td>
 						</tr>
 						<tr>
-							<td align="right">User Id:</td>
+							<td align="right">User Name:</td>
 							<td><input type="text" name="CustUid" size="12" maxlength="12" 
 									value="<?php echo $customerInfo['CustUid'];?>">
 								<small><font color="red"><?php echo $error["CustUid"]; ?></font></small>	
