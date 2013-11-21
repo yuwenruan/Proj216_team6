@@ -1,12 +1,12 @@
 <?php
 /* Team 6 TravelExperts Workshop 1: Proposal, OOSD Fall 2013 */
-/*   Paul Millilgan SAIT-ID:000146584, 17 Nov 2013           */
+/*   Paul Millilgan SAIT-ID:000146584, 21 Nov 2013           */
 
 /****** contact.php: display contact info & optionally send email */
 
   session_start();
 
-    /* remember whether this page was reloaded due to form submission */
+    /* remember whether this page was reloaded due to email form submission */
   $formSubmitted = isset($_POST['sendButton']); 
 
     /* if form was submitted then remember what was entered else empty string */
@@ -25,6 +25,19 @@
 	//mail($toEmailAddr, $emailSubject, $emailMessage, "From:".$fromEmailAddr);
 	$sendSuccessful = false; /* email server not yet configured */
   }
+  
+  $submitFeedback = ""; // no feedback if form not yet submitted
+  if($formSubmitted){ /* if form was submitted then give feedback */
+    if($sendAttempted){
+      if($sendSuccessful){
+        $submitFeedback = "Email sent<br>";
+      }else{
+        $submitFeedback = "Email server not yet configured<br>";
+      }
+	}else{ /* missing one or more values */
+      $submitFeedback = " Must enter your email address, subject & message.<br>";
+	}
+  }
 ?>
 <!DOCTYPE html>
 
@@ -37,7 +50,7 @@
 	<div id="wrap">
       <?php	include_once("header.php"); ?>
 
-<div id="content">
+<div id="content"> <!-- begin content -->
 
 <?php
 
@@ -53,26 +66,23 @@
 		}
 	}
 
-
-	//connect to database
-	$conn=mysql_connect("localhost","root","");
+	$conn=mysql_connect("localhost","root",""); //connect to database
 	$db=mysql_select_db('travelexperts') or die("Could not connect");
 
-	$sql_agency="SELECT * FROM agencies;";
+	$sql_agency="SELECT * FROM agencies;"; // get all agencies
 	$result=mysql_query($sql_agency) or die(mysql_error());
 	
 	print("<h1>Contact Us!</h1>");
-	print("<h3>For assistance contact one of our qualified agents:</h3>");
 
 	while ($row=mysql_fetch_assoc($result)) {
-		$agencyid=$row['AgencyId'];
+		$agencyid=$row['AgencyId']; // get agents at this agency
 		$sql_agent="SELECT * from agents where AgencyId='".$agencyid."';";
 		$sql_result=mysql_query($sql_agent) or die(mysql_error());
-		if (mysql_num_rows($sql_result) > 0) {					
+		if (mysql_num_rows($sql_result) > 0) {
 			echo "<table align='center'>";
-			//echo "<tr><td>Name</td><td>Phone</td><td></td><td>Email</td></tr>";
+			echo "<tr><td><h3>".$row['AgncyCity']."</h3></td></tr>";
 			while($row_agent=mysql_fetch_assoc($sql_result)) {
-				echo "<tr>";
+				echo "<tr>"; // display all agents at this loction
 				echo "  <td>".$row_agent['AgtFirstName']." ".$row_agent['AgtLastName']."</td>";
 				$phone = formatPhoneNumber($row_agent['AgtBusPhone']);
 				echo "  <td>".$phone."</td><td></td>";
@@ -80,7 +90,7 @@
 				echo "</tr>";
 			}
 			echo "</table>";
-			echo "<p align='center'>";
+			echo "<p align='center'>"; // display agency information
 			echo "<b>Located in our office at:</b><br>";
 			echo $row['AgncyAddress'].", ";
 			echo $row['AgncyCity'].", ";
@@ -92,12 +102,12 @@
 			}
 		}
 	mysql_close($conn);
-
-	print("<h2>Or send an email:</h2>");
 ?>
 
+	<h2>Or send an email:</h2>
+
     <form method="post" name="emailForm">
-        <table>
+        <table> <!-- get user email address, subject and message -->
           <tr>
             <td align="right">To:</td>
       	    <td>info@TravelExperts.com</td>
@@ -136,28 +146,18 @@
               ?>
       	    </td>
           </tr>
+          <tr> <!-- submit checks what was entered and attempts to send the email -->
+            <td align="right"><input type="submit" name="sendButton" value="Send"></td>
+            <td><?= $submitFeedback; ?></td>
+          </tr>
         </table>
-        <input type="submit" name="sendButton" value="Send">
-
-        <?php
-          if($formSubmitted){ /* if form was submitted then give feedback */
-            if($sendAttempted){
-              if($sendSuccessful){
-                print("Email sent<br>");
-              }else{
-                print("Email server not yet configured<br>");
-              }
-	        }else{ /* missing one or more values */
-              print(" Must enter your email address, subject & message.<br>");
-	        }
-          }
-        ?>
     </form>
-</div>
+</div> <!-- end content -->
 
 <?php
 	include_once("footer.php");
 ?>
+
 		</div>
 	</body>
 </html>
