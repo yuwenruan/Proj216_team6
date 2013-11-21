@@ -27,6 +27,7 @@
 				$bookings['BookingDate']=isset($_POST["bdate"])? $_POST["bdate"]:date(Y-m-d);
 				$bookings['BookingNo']=isset($_POST["bnumber"])? $_POST["bnumber"]:"";
 				$bookings['TravelerCount']=isset($_POST["travels"])? $_POST["travels"]:"";
+				$bookings['customerId']=isset($_POST["customer"])? $_POST["customer"]:"";
 				$bookings['TripTypeId']=isset($_POST["ttype"])? $_POST["ttype"]:"";
 				$bookings['PackageId']=isset($_POST["package"])? $_POST["package"]:"";
 				
@@ -46,11 +47,43 @@
 					}
 				}
 				else if (isset($_SESSION['login']) && $_SESSION['login']=='agent'){
+			?>
+				<select name="customer" value="<?php echo $bookings['customerId']; ?>" > 
+					<?php
+						//set value for select element
+						$sql="SELECT AgtFirstName, AgtLastName FROM customers;";
+						$result=mysql_query($sql);
+						$i=1;
+						while ($row=mysql_fetch_row($result)) {							
+							echo "<option value='".$row['AgtFirstName']." " .$row['AgtLastName']."'></option>";
+						}
+					?>
+				</select>
+			<?php			
 					
 				}
 				else {
 					mysql_close($conn);	
 					header("Location: index.php");
+				}
+				
+				if (isset($_POST['submit'])) {
+					
+					$insertStr="INSERT INTO bookings (";
+					$valueStr=" VALUES (";
+					while (list($key, $value) = each($bookings)) {
+						$insertStr.=$key.',';
+						$valueStr .='"'.$value . '",';
+					}
+					$insertStr = substr($insertStr,0,-1);  //get rid of last ','
+					$insertStr .=')';
+					
+					$valueStr = substr($valueStr,0,-1); 
+					$valueStr .= ');';
+					
+					//generate the full sql statement
+					$query_str=$insertStr . $valueStr ;
+					
 				}
 				
 			?>
@@ -92,6 +125,7 @@
 										echo "<option value='".$row[0]."'>".$row[1]."</option>";
 								}
 							?>
+							</select>
 						</td>
 					</tr>
 					<tr>
@@ -115,6 +149,7 @@
 												echo "<option value='".$row[0]."'>".$row[1]."</option>";
 										}
 									}
+									echo "</select>";
 								}
 								else {
 									$sql="SELECT PkgName FROM packages where PackageId='".$packageId."';";
