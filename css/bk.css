@@ -16,7 +16,7 @@ header {
 }
 #submenu {
 	clear: both;
-	height: 50px;
+	height: 80px;
 	background: #0D1FA6;
 }
 
@@ -36,16 +36,19 @@ footer {
 #logo {
 	float:left;
 	height:100px;
+	margin-right:5%;
 }
 
 #banner {
 	margin:auto;
-	/*padding-top:10px;*/
+	height:100px
 }
 
 #welcome {
-	color: green;
+	color: #f2f46d;
 	font-family: Arial;
+	position:relative;
+	padding-top:25px;
 }
 .links{
 	font-size:20px;
