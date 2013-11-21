@@ -16,6 +16,7 @@ If they are it sends them to the payment page, if not it sends them to the login
 	}
 	else
 	{
+		$_SESSION['order'] = $_POST['order'];
 		header("Location: login.php");
 	}
 
