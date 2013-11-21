@@ -14,7 +14,7 @@ customer must be logged in to place an order, login button displayed in included
 	through orderButton.php.
 */
 
-start_session();
+session_start();
 	
 function displayPackage(){ 
 
