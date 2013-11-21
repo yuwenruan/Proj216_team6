@@ -15,7 +15,7 @@ It sets up the login buttons based on session variables.
 				<a href="logout.php" id="logoutButton"><img src="./images/logout.png"></a>
 			</div>
 			<div id="banner">
-				<h1 id="welcome">Welcome to Travel Experts</h1>
+				<h1 id="welcome">Come travel with us</h1>
 			</div>
 		</header>
 		<?php
