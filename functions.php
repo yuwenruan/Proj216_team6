@@ -1,8 +1,18 @@
 <?php 
 /* 
 Author		:	George Chacko
-Date		:	15 November 2013
+Date		:	21 November 2013
+Project		: 	Phase I - workshop prototype
 -- Functions file  ----- functions used in web site 
+Reusable functions in this file
+--------------------------------
+1. insertData		:	Inserts data into data base. 
+						Parameters - data array and table name. Data associative array hold
+						column names (keys) and values
+2. insertData_Id	:	Inserts data into data base same as insertData. But at the same time 
+						returns id of newly inserted row
+3. checkColumns_UsersTable	:	Checks whether all desired columns exists in users table.
+								If so returns true otherwise false
 */
 // Adding Data to DB-------------------
 function insertData($dataArray,$table)
@@ -85,14 +95,11 @@ function insertData_Id($dataArray,$table)
 	
 	if($results)
 	{
-		//mysql_close();
-		//return true;
 		return mysql_insert_id();
 	}
 	else
 	{
 		mysql_close();
-		//return false;
 		return 0;
 	}
 }

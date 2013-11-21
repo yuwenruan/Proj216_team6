@@ -1,9 +1,7 @@
 <?php 
-	session_start();
-
 /******************************************************************************************
 Author		:	George Chacko
-Date		:	14 November 2013
+Date		:	21 November 2013
 Project		: 	Phase I - workshop prototype
 Customer registration Page 
 --------------------------- 
@@ -17,6 +15,7 @@ Customer registration Page
    otherwise to home (index) page
 /******************************************************************************************
 */
+session_start();
 ?>
 <!DOCTYPE html>
 
@@ -77,8 +76,6 @@ Customer registration Page
 	//----------------------
 	if (isset($_POST["submit"]))
 	{
-		
-		
 		// looping form collection for each customer information field
 		foreach (array_keys($_POST) as $name)
 		{
@@ -90,32 +87,32 @@ Customer registration Page
 		
 		if(empty($customerInfo['CustFirstName']))
 		{
-			$error['CustFirstName'] = "First Name is Mandatory.";
+			$error['CustFirstName'] = "*Missing*";
 			$isValidForm = false;
 		}
 		if(empty($customerInfo['CustLastName']))
 		{
-			$error['CustLastName'] = "Last Name is Mandatory.";
+			$error['CustLastName'] = "*Missing*";
 			$isValidForm = false;
 		}
 		if(empty($customerInfo['CustAddress']))
 		{
-			$error['CustAddress'] = "Address is Mandatory.";
+			$error['CustAddress'] = "*Missing*";
 			$isValidForm = false;
 		}
 		if(empty($customerInfo['CustCity']))
 		{
-			$error['CustCity'] = "City is Mandatory.";
+			$error['CustCity'] = "*Missing*";
 			$isValidForm = false;
 		}
 		if(empty($customerInfo['CustProv']))
 		{
-			$error['CustProv'] = "Province is Mandatory.";
+			$error['CustProv'] = "*Missing*";
 			$isValidForm = false;
 		}
 		if(empty($customerInfo['CustPostal']))
 		{
-			$error['CustPostal'] = "Postal Code is Mandatory.";
+			$error['CustPostal'] = "*Missing*";
 			$isValidForm = false;
 		}
 		else // checking postal code format
@@ -129,12 +126,12 @@ Customer registration Page
 		}
 		if(empty($customerInfo['CustBusPhone']))
 		{
-			$error['CustBusPhone'] = "Bus Phone is Mandatory.";
+			$error['CustBusPhone'] = "*Missing*";
 			$isValidForm = false;
 		}
 		if(empty($customerInfo['CustEmail']))
 		{
-			$error['CustEmail'] = "Email is Mandatory.";
+			$error['CustEmail'] = "*Missing*";
 			$isValidForm = false;
 		}
 		else  // Checking email format
@@ -147,18 +144,18 @@ Customer registration Page
 		}
 		if(empty($customerInfo['CustUid']))
 		{
-			$error['CustUid'] = "User Id is Mandatory.";
+			$error['CustUid'] = "*Missing*";
 			$isValidForm = false;
 		}
 		// checking both password and re enter password text fields filled
 		if(empty($customerInfo['CustPwd']))
 		{
-			$error['CustPwd'] = "Password is Mandatory.";
+			$error['CustPwd'] = "*Missing*";
 			$isValidForm = false;
 		}
 		elseif(empty($customerInfo['CustConfmPwd']))
 		{
-			$error['CustConfmPwd'] = "Re Enter Password is Mandatory.";
+			$error['CustConfmPwd'] = "*Missing*";
 			$isValidForm = false;
 		}
 		else  // checking both password and re enter password are same
@@ -237,7 +234,7 @@ Customer registration Page
 <div id="content">
 	<form id="frm" method="post" >
 		<table align="center">
-			<tr><td align="center"><h2>Customer Information</h2></td></tr>
+			<tr><td align="center"><h2>Customer Registration</h2></td></tr>
 			<tr>
 				<td>
 					<table>
