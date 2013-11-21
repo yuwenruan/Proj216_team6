@@ -100,7 +100,7 @@
 ?>
 <div id="content"> 
 
-	<h2>Welcome, Please Login In</h2>
+	<h2>Welcome, Please Login</h2>
 	<h4><?=$showInfo?></h4>
 	<form method="POST">
 		<table border="0">
