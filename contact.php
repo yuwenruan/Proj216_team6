@@ -1,8 +1,12 @@
 <?php
-/* Team 6 TravelExperts Workshop 1: Proposal, OOSD Fall 2013 */
-/*   Paul Millilgan SAIT-ID:000146584, 21 Nov 2013           */
+/*
+ Author: Paul Milligan
+ Course: PROJ216 Team 6
+ Date: Nov 21 2013
+ Travel Experts Project
 
-/****** contact.php: display contact info & optionally send email */
+ contact.php: display contact information & optionally send email
+*/
 
   session_start();
 

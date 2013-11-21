@@ -1,6 +1,6 @@
 <!--	
 	Author: Yu Wen Ruan
-	Course: CPRG216
+	Course: PROJ216, Team 6
 	Date: Nov 14, 2013
 	
 	footer.php
@@ -8,5 +8,5 @@
 -->
 
 
-		<footer> <p style="padding-top:20px;">&copy; <?=date('M Y');?> by PROJ216 TEAM 6--Absolute Solution Inc. All right reserved.<p></footer>
+		<footer> <p style="padding-top:20px;">&copy; <?=date('M Y');?> by Absolute Solution Inc. All right reserved.<p></footer>
 	

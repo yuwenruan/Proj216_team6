@@ -1,5 +1,6 @@
 /*
  Author: Parker Smith
+ Course: PROJ216 Team 6
  Date: Nov 18 2013
  Travel Experts Project
  

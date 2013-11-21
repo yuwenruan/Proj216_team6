@@ -1,6 +1,6 @@
 <!--
 	Author: Yu Wen Ruan
-	Course: CPRG216
+	Course: PROJ216, Team 6
 	Date: Nov 18, 2013
 	
 	agentdelete.php
@@ -30,5 +30,8 @@
 			
 		}
 		else header("Location: agentmanagement.php");
+	}else{
+	  header("Location: login.php");
 	}
+	
 ?>

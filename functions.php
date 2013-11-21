@@ -1,20 +1,24 @@
 <?php 
 /* 
-Author		:	George Chacko
-Date		:	21 November 2013
-Project		: 	Phase I - workshop prototype
+Author : George Chacko
+Course : PROJ216, Team 6
+Date   : 21 November 2013
+
 -- Functions file  ----- functions used in web site 
 Reusable functions in this file
 --------------------------------
-1. insertData		:	Inserts data into data base. 
+1. insertData		:	Inserts a row into the specified table of data base. 
 						Parameters - data array and table name. Data associative array hold
 						column names (keys) and values
 2. insertData_Id	:	Inserts data into data base same as insertData. But at the same time 
 						returns id of newly inserted row
-3. checkColumns_UsersTable	:	Checks whether all desired columns exists in users table.
-								If so returns true otherwise false
+3. checkColumns_UsersTable	:	This function is used to alert the user if they have not
+                                imported the correct mySQL database. It checks that all
+								required columns exist in the "users" Table.
 */
-// Adding Data to DB-------------------
+
+
+// Insert row into table of DB return true if successful-------------
 function insertData($dataArray,$table)
 {
 	// variable to hold sql statement
@@ -59,7 +63,9 @@ function insertData($dataArray,$table)
 		return false;
 	}
 }
-//--------------------------------------
+
+
+// Insert row into table of DB return new row ID if successful-------------
 function insertData_Id($dataArray,$table)
 {
 	// variable to hold sql statement
@@ -103,7 +109,9 @@ function insertData_Id($dataArray,$table)
 		return 0;
 	}
 }
-//--------------------------------
+
+
+// check that correct database is imported into mySQL-------------
 function checkColumns_UsersTable()
 {
 	//-----------------------------------------

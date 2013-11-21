@@ -1,6 +1,6 @@
 <!--
 	Author: Yu Wen Ruan
-	Course: CPRG216
+	Course: PROJ216, Team 6
 	Date: Nov 17, 2013
 	
 	customermanagement.php
