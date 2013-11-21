@@ -1,0 +1,13 @@
+table{
+	background-color:#F5F5FA;
+	width:100%;
+	padding-bottom:30px;
+}
+
+td{
+	padding:5px;
+}
+
+td.titleRow{
+	background-color:#b9bfec;
+}
