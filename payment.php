@@ -1,15 +1,14 @@
 <!--
-	Author: Yu Wen Ruan
+	Author: Yu Wen Ruan & Paul Milligan
 	Course: PROJ216
 	Date: Nov 21, 2013
 	
 	payment.php
-	booking page for customer to book the travel packages
+	Booking page for customer and agent to book the travel packages
 -->
 <!DOCTYPE html>
 <?php
-	session_start(); //start session
-	
+	session_start(); //start session	
 ?>
 <html>
 	<head>
@@ -18,18 +17,27 @@
 	</head>
 	<body>
 		<div id="wrap">
-			<?php
+			<?php				
 				include_once("header.php");	
 			?>
 			<div id="content"> 
+			<form method="POST">
+				<table>
 			<?php
+				/*
+					Set initial variables and array to get the information from form
+				*/
+				$today=date("Y-m-d");
+			
 				$bookings=array();
-				$bookings['BookingDate']=isset($_POST["bdate"])? $_POST["bdate"]:date(Y-m-d);
+				$bookings['BookingDate']=isset($_POST["bdate"])? $_POST["bdate"]:$today;
 				$bookings['BookingNo']=isset($_POST["bnumber"])? $_POST["bnumber"]:"";
 				$bookings['TravelerCount']=isset($_POST["travels"])? $_POST["travels"]:"";
-				$bookings['customerId']=isset($_POST["customer"])? $_POST["customer"]:"";
+				$bookings['CustomerId']=isset($_POST["cname"])? $_POST["cname"]:"";
 				$bookings['TripTypeId']=isset($_POST["ttype"])? $_POST["ttype"]:"";
 				$bookings['PackageId']=isset($_POST["package"])? $_POST["package"]:"";
+				
+				$submitFeedback="";
 				
 				//connect to database
 				$conn=mysql_connect("localhost","root","");
@@ -39,26 +47,34 @@
 				if (isset($_SESSION['login']) && $_SESSION['login']=='customer') {
 					//if customer id is get
 					if (isset($_SESSION['customerId'])) { 
-						$customerId=$_SESSION['customerId'];
+						$bookings['CustomerId']=$_SESSION['customerId'];
 						
 						if (isset($_SESSION['order'])) {
-							$packageId=$_SESSION['order'];
+							$bookings['PackageId']=$_SESSION['order'];
 						}
 					}
+					else echo "No customer ID available for booking";
 				}
 				else if (isset($_SESSION['login']) && $_SESSION['login']=='agent'){
+					if (isset($_SESSION['order'])) {
+						$bookings['PackageId']=$_SESSION['order'];
+					}
 			?>
-				<select name="customer" value="<?php echo $bookings['customerId']; ?>" > 
-					<?php
-						//set value for select element
-						$sql="SELECT AgtFirstName, AgtLastName FROM customers;";
-						$result=mysql_query($sql);
-						$i=1;
-						while ($row=mysql_fetch_row($result)) {							
-							echo "<option value='".$row['AgtFirstName']." " .$row['AgtLastName']."'></option>";
-						}
-					?>
-				</select>
+				<tr>
+					<td><p>Customer Name:</p></td>
+					<td>
+						<select name="cname" value="<?php echo $bookings['CustomerId'];?>"> 
+							<?php
+								//Select SQL statement for showing the customer
+								$sql="SELECT CustomerId, CustFirstName, CustLastName FROM customers;";
+								$result=mysql_query($sql) or die(mysql_error());
+								while ($row=mysql_fetch_assoc($result)) {							
+									echo "<option value='".$row['CustomerId']."'>".$row['CustFirstName']." ".$row['CustLastName']."</option>";
+								}
+							?>
+						</select>
+					</td>
+				</tr>
 			<?php			
 					
 				}
@@ -84,18 +100,24 @@
 					//generate the full sql statement
 					$query_str=$insertStr . $valueStr ;
 					
+					//insert sql statement 
+					$result=mysql_query($query_str) or die(mysql_error());
+					if ($result) 
+						$submitFeedback="Booking succeeded";
+					else
+						$submitFeedback="Booking failed";
 				}
 				
 			?>
-				<form method="POST">
-					<table>
+				
+					
 					<tr>
 						<td>Date:</td>
-						<td><input type="text" name="bdate" value="<?echo $bookings['BookingDate'];?>"/></td>						
+						<td><?=$bookings['BookingDate'];?></td>						
 					</tr>
 					<tr>
 						<td>Booking Number:	</td>	
-						<td><input type="text" name="bnumber" value="<?echo $bookings['BookingNo'];?>"/></td>						
+						<td><input type="text" name="bnumber" value="<?php echo $bookings['BookingNo'];?>"/></td>						
 					</tr>
 					<tr>
 						<td>Travellers:</td>
@@ -114,7 +136,7 @@
 							<?php
 								//set value for select element
 								$sql="SELECT * FROM triptypes;";
-								$result=mysql_query($sql);
+								$result=mysql_query($sql) or die(mysql_error());
 								$i=1;
 								while ($row=mysql_fetch_row($result)) {
 									if ($i==1) {
@@ -133,40 +155,19 @@
 						<td>
 							
 							<?php
-								//set value for select element
-								if ($packageId=="") {
-									echo "<select name='package' value='".$bookings['PackageId'] ."' >" ;
-									$sql="SELECT PkgName FROM packages;";
-									$result=mysql_query($sql);
-									$i=1;
-									if ($result) {
-										while ($row=mysql_fetch_row($result)) {
-											if ($i==1) {
-												echo "<option value='".$row[0]."' selected>".$row[1]."</option>";
-												$i+=1;
-											}
-											else
-												echo "<option value='".$row[0]."'>".$row[1]."</option>";
-										}
-									}
-									echo "</select>";
-								}
-								else {
-									$sql="SELECT PkgName FROM packages where PackageId='".$packageId."';";
-									$result=mysql_query($sql);
-									if ($result) {
-										$row=mysql_fetch_row($result);
-										$bookings['PackageId']=$row[0];									
-									}
-									echo "<input name='package' value='".$bookings['PackageId'] ."' >" ;
+								$sql="SELECT PkgName FROM packages where PackageId='".$bookings['PackageId']."';";
+								$result=mysql_query($sql) or die(mysql_error());
+								if ($result) {
+									$row=mysql_fetch_assoc($result);
+									//$bookings['PackageId']=$row[0];	
+									echo "<input type='hidden' name='package' value='".$bookings['PackageId'] ."' >".$row['PkgName'] ;
 								}
 							?>
 						</td>
 					</tr>
 					
-					<tr><td col="2"><input type="submit" name="submit" value="Booking" /></tr>
-					</table>
-					
+					<tr><td ><input type="submit" name="submit" value="Booking" /></td><td ><?=$submitFeedback;?></td></tr>
+					</table>			
 				
 				</form>
 			</div>
