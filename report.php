@@ -1,7 +1,9 @@
 <!--
 	Author: Yu Wen Ruan
-	Course: CPRG216
-	Date: Nov 20, 2013
+	Date: Nov 19 2013
+	Course: PROJ216 Team 6
+	Assignment: Threaded workshop pahse I 
+				Travel Experts Web Site
 	
 	report.php
 	The page to generate report for agents

@@ -1,20 +1,35 @@
+/*
+	Author: Yu Wen Ruan
+	Date: Nov 15 2013
+	Course: PROJ216 Team 6
+	Assignment: Threaded workshop pahse I 
+				Travel Experts Web Site
+
+	This page handles the general layout for every page on the site
+*/
+
+/*wraps all the content within one div*/
 #wrap {
 	width: 80%;
 	margin: auto;
 }
 
+/*sets the height and background color for the header*/
 header {
 	height: 100px;
 	/*background: #CFCBC4;*/
 	background:black;
 }
 
+/*sets the styles for the nav bar and clears everything left and right so it appears on its own*/
 #menu {	
 	clear: both;
 	height: 50px;
 	background: #0D1FA6;
 	font-family:arial;
 }
+
+/*Sets the styles for the nav menu for agents logged in*/
 #submenu {
 	clear: both;
 	height: 80px;
@@ -22,11 +37,13 @@ header {
 	font-family:arial;
 }
 
+/*the styles for the changeable content of every page, sets height to auto and color*/
 #content {
 	height: auto;
 	background: #F5F5FA;
 }
 
+/*styles for the footer on every page*/
 footer {
 	clear: both;
 	height: 60px;
@@ -35,23 +52,28 @@ footer {
 	text-align: center;
 }
 
+/*brings logo image to the left of the header and sets height*/
 #logo {
 	float:left;
 	height:100px;
 	margin-right:5%;
 }
 
+/*positions the text in the header*/
 #banner {
 	margin:auto;
 	width:35%;
 }
 
+/*styles the text in the header*/
 #welcome {
 	color: #f2f46d;
 	font-family: Arial;
 	position:relative;
 	padding-top:25px;
 }
+
+/*styles the links in the nav bar*/
 .links{
 	font-size:20px;
 	width:17%;
@@ -60,6 +82,8 @@ footer {
 	margin-left:70px;
 	float:left;
 }
+
+/*styles all other links not in the nav bar and removes default text decoration*/
 a {
 	color: #FFFFFF;
     text-decoration: none;

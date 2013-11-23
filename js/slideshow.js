@@ -1,8 +1,9 @@
 /*
- Author: Parker Smith
- Course: PROJ216 Team 6
- Date: Nov 18 2013
- Travel Experts Project
+	Author:Parker Smith
+	Date: Nov 15 2013
+	Course: PROJ216 Team 6
+	Assignment: Threaded workshop phase I 
+				Travel Experts Web Site
  
  This page enables the slideshow displayed on index.php.
 */

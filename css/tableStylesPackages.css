@@ -1,3 +1,14 @@
+/*
+	Author:Parker Smith
+	Date: Nov 19 2013
+	Course: PROJ216 Team 6
+	Assignment: Threaded workshop pahse I 
+				Travel Experts Web Site
+
+	This page handles the styles for the table on the packages.php page
+*/
+
+/*style main table*/
 table{
 	background-color:#F5F5FA;
 	width:100%;
@@ -5,10 +16,12 @@ table{
 	padding-top:30px;
 }
 
+/*style all td elements with padding*/
 td{
 	padding:5px;
 }
 
+/*style the title rows with a background color*/
 td.titleRow{
 	background-color:#b9bfec;
 }

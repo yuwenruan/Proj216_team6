@@ -1,26 +1,30 @@
 <!--
 Author: Parker Smith
 Date: Nov 18 2013
-Travel Experts Project
+Course: PROJ216 Team 6
+Assignment: Threaded workshop pahse I 
+			Travel Experts Web Site
 
 This page displays the packages available to the customer AFTER the current date.
 customer must be logged in to place an order, login button displayed in included header.
 -->
 <?php
+session_start();
+
 /*This function gets the packages from the db
 	and displays them on the html page.
 	Only packages past the current date are displayed.
 	Function checks if user is logged in before sending them to booking page
 	through orderButton.php.
-*/
+*/	
 
-session_start();
-	
 function displayPackage(){ 
-
+	
+	/*Start db connection*/
 	$dbh = mysql_connect("localhost", "root", "");
 	mysql_select_db("travelexperts") or die ("db connection failed");
 	
+	/*create strings for mysql queries*/
 	$packageid = ("SELECT PackageId FROM packages");
 	$packageName = ("SELECT PkgName FROM packages");
 	$packageStart = ("SELECT DATE(PkgStartDate) AS PkgStartDate FROM packages");
@@ -28,6 +32,7 @@ function displayPackage(){
 	$packageDesc = ("SELECT PkgDesc FROM packages");
 	$packagePrice = ("SELECT PkgBasePrice FROM packages");
 	
+	/*make mysql queries*/
 	$packageid = mysql_query($packageid);
 	$packageName = mysql_query($packageName);
 	$packageStart = mysql_query($packageStart);
@@ -35,14 +40,18 @@ function displayPackage(){
 	$packageDesc = mysql_query($packageDesc);
 	$packagePrice = mysql_query($packagePrice);
 	
+	/*get the current date-formatted yyyy-mm-dd*/
 	$date = date("Y-m-d");
 	
+	/*get the number of packages in the packages table*/
 	$rows = mysql_num_rows($packageid);
-		
+	
+	//define iterator for loop
 	$i=0;
 	
 	print("<table>");
 	
+	/*This loop gets the package info from a specific row and prints the info in a table*/
 	while($i < $rows){
 			$idResult = mysql_result($packageid, $i);
 			$nameResult = mysql_result($packageName, $i);
@@ -51,6 +60,7 @@ function displayPackage(){
 			$descResult = mysql_result($packageDesc, $i);
 			$priceResult = mysql_result($packagePrice, $i);
 			
+			/*conditional to check if the package offer has finished*/
 			if($endResult > $date)
 			{
 				
@@ -67,6 +77,7 @@ function displayPackage(){
 							</form>
 						</td>
 					</tr>");
+					/*conditional to check if package offer has started if yes, print package with start date offer in red*/
 					if($endResult > $date && $startResult < $date)
 						{
 							print("<tr>
@@ -92,7 +103,7 @@ function displayPackage(){
 			}
 			$i++;
 			
-	}
+	}//end loop
 	print("</table>");
 }
 	

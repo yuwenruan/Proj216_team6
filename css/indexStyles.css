@@ -1,29 +1,45 @@
+/*
+	Author:Parker Smith
+	Date: Nov 19 2013
+	Course: PROJ216 Team 6
+	Assignment: Threaded workshop pahse I 
+				Travel Experts Web Site
+
+	This page styles the slide show on the index.php page
+*/
+
+/*position the main image box wrapper*/
 #imageBox{
 	position:relative;
 	width:100%;
 	margin:auto;
 }
 
+/*set image to 100% of containing div*/
 #imageS{
 	width:100%;
 }
 
+/*Sets the div that contains order button and slide show navigation in the center*/
 #linkBox{
 	margin:auto;
 	width:100%;
 	height:70px;
 }
 
+/*Gives the slide show navigation a pointer on hover over*/
 .linkP{
 	cursor:pointer;
 }
 
+/*positions the order button div and the slide navigation div beside each other under the slide show*/
 div.functionClass{
 	position:relative;
 	width:50%;
 	float:left;
 }
 
+/*positions the order button to the right of its containing functionClass div*/
 #orderImage{
 	float:right;
 }

@@ -2,8 +2,9 @@
 /******************************************************************************************
 Author		:	George Chacko
 Date		:	21 November 2013
-Project		: 	Phase I - workshop prototype
-Customer registration Page 
+Course: PROJ216 Team 6
+Assignment: Threaded workshop pahse I 
+			Travel Experts Web Site 
 --------------------------- 
 1. Basic customer information like first name, last name etc. inserted into
    customers table.
