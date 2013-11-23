@@ -14,12 +14,12 @@
 	$url  = $_SERVER['HTTP_HOST'];
 	$url .= $_SERVER['SCRIPT_NAME'];
 	
-	//if order button is presses, after login go to payment.php
+	//if order button is presses, after login go to booking.php
 	//otherwise, go to index.php
 	if (isset($_SESSION['order'])) {	
 		$packageId=$_SESSION['order'];
 		echo $_SESSION['order'];
-		$theurl="http://".dirname($url)."/payment.php";
+		$theurl="http://".dirname($url)."/booking.php";
 	}
 	else {	
 		$packageId="";
