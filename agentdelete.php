@@ -1,7 +1,9 @@
 <!--
 	Author: Yu Wen Ruan
-	Course: PROJ216, Team 6
 	Date: Nov 18, 2013
+    Course: PROJ216 Team 6
+    Assignment: Threaded Workshop - Phase I
+                Travel Experts Web Site
 	
 	agentdelete.php
 	We arrive this file from agentmanagement.php when a delete link is clicked.
@@ -21,7 +23,7 @@
 		$conn=mysql_connect("localhost","root","");
 		$db=mysql_select_db('travelexperts') or die("Could not connect");
 		
-		//id is in the URL, the record needs to be located and delete
+		//agent id is in the URL, the record needs to be located and delete
 		if (isset($_GET["id"])){
 			$id= $_GET["id"];
 			$sql="SELECT * FROM CUSTOMERS WHERE AgentId='".$id."';";

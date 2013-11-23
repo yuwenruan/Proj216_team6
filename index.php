@@ -1,10 +1,13 @@
 <!--
 Author: Parker Smith
 Date: Nov 18 2013
-Travel Experts Project
+Course: PROJ216 Team 6
+Assignment: Threaded Workshop - Phase I
+            Travel Experts Web Site
 
 This is the main index page, it displays a slideshow in the main content,
 orders can be placed through the slideshow.
+It uses funcitions from js/slideshow.js
 -->
 <?php
 	session_start();

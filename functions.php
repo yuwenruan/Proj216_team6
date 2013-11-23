@@ -1,8 +1,10 @@
 <?php 
 /* 
 Author : George Chacko
-Course : PROJ216, Team 6
 Date   : 21 November 2013
+Course : PROJ216 Team 6
+Assignment: Threaded Workshop - Phase I
+            Travel Experts Web Site
 
 -- Functions file  ----- functions used in web site 
 Reusable functions in this file

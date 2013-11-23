@@ -1,11 +1,13 @@
 <!--
 	Author: Yu Wen Ruan
-	Course: PROJ216, Team 6
 	Date: Nov 17, 2013
+    Course: PROJ216 Team 6
+    Assignment: Threaded Workshop - Phase I
+                Travel Experts Web Site
 	
 	agentmanagement.php
-	We arrive this page once agent logged in
-	Otherwise go to login.php
+	We arrive this page after clicking agent-management menu button
+    If agent is not logged in then go to login.php
 	
 	-list employees in limit records per page
 	-each employee record has edit link to modify
@@ -31,7 +33,7 @@
 <div id="content"> 
 <?php
 	$agentErr="";
-	//when agent login, show records of employees, each page show limited records
+	//if agent is login, show records of employees, each page show limited records
 	if (isset($_SESSION['login']) && $_SESSION['login']=='agent') {
 		
 		$perpage = 6; 
@@ -96,7 +98,7 @@
 		}
 		echo "<br> <a style='color:blue;' href='agentrecord.php'>Add New Record</a>";
 		
-		//if agent is not deletable, show message this agent cannot be deleted.
+		//display message indicating success or failure of delete operation, only delete if agent has no customers
 		if (isset($_GET['agentid'])) {
 			if ($_GET['agentid']=='0')	{
 				$agentErr="This agent is deleted";

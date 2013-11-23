@@ -1,7 +1,9 @@
 <!--
 	Author: Yu Wen Ruan
-	Course: PROJ216, Team 6
 	Date: Nov 17, 2013
+    Course: PROJ216 Team 6
+    Assignment: Threaded Workshop - Phase I
+                Travel Experts Web Site
 	
 	customermanagement.php
 	main page to manage customers

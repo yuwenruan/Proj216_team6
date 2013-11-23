@@ -1,7 +1,9 @@
 <!--
 	Author: Yu Wen Ruan
-	Course: PROJ216, Team 6
 	Date: Nov 17, 2013
+	Course: PROJ216, Team 6
+    Assignment: Threaded Workshop - Phase I
+                Travel Experts Web Site
 	
 	agentrecord.php
 	If user is logged in,
@@ -129,7 +131,7 @@
 									// get 'id' from URL
 									$id = $_GET['id'];
 									
-									// get the recode from the database
+									// get the record from the database
 									//set the information back to form
 									$sql_str="SELECT * FROM AGENTS WHERE AgentId='".$id."';";
 									$result=mysql_query($sql_str) or die(mysql_error());;

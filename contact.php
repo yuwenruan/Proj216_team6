@@ -1,9 +1,10 @@
 <?php
 /*
  Author: Paul Milligan
- Course: PROJ216 Team 6
  Date: Nov 21 2013
- Travel Experts Project
+ Course: PROJ216 Team 6
+ Assignment: Threaded Workshop - Phase I
+             Travel Experts Web Site
 
  contact.php: display contact information & optionally send email
 */

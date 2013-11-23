@@ -1,10 +1,12 @@
 <!--	
 	Author: Yu Wen Ruan
-	Course: CPRG216
 	Date: Nov 14, 2013
+    Course: PROJ216 Team 6
+    Assignment: Threaded Workshop - Phase I
+                Travel Experts Web Site
 	
 	login.php
-	login page for customer and agent to login in
+	login page for customer or agent to login in
 	
 -->
 <?php
@@ -14,11 +16,10 @@
 	$url  = $_SERVER['HTTP_HOST'];
 	$url .= $_SERVER['SCRIPT_NAME'];
 	
-	//if order button is presses, after login go to booking.php
+	//if order button was pressed then after login go to booking.php
 	//otherwise, go to index.php
 	if (isset($_SESSION['order'])) {	
 		$packageId=$_SESSION['order'];
-		echo $_SESSION['order'];
 		$theurl="http://".dirname($url)."/booking.php";
 	}
 	else {	
@@ -75,7 +76,7 @@
 				}
 			}
 			else {
-				$showInfo="This user does not exist, please registe first";
+				$showInfo="This user does not exist, please register first";
 			}
 			
 		}

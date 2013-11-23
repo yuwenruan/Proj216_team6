@@ -1,10 +1,17 @@
 <!--
 Author: Parker Smith
 Date: Nov 18 2013
+Course: PROJ216 Team 6
+Assignment: Threaded Workshop - Phase I
+            Travel Experts Web Site
+
+
 Page header file to be included
 
 This file sets up the header of every page to be displayed.
 It sets up the login buttons based on session variables.
+It also includes the menu bar which has more selections if an agent is logged on
+It also notifies the user if they have not imported the correct database
 -->
 
 		<header> 
@@ -42,7 +49,7 @@ It sets up the login buttons based on session variables.
 	}
 	//----- Code for checking users table columns - START
 	// Added by George
-	// Notify the user about database update
+	// Notify the user if they have not imported our datebase
 	include_once("functions.php");	
 	
 	if(!checkColumns_UsersTable())
