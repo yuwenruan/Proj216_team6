@@ -10,7 +10,7 @@ customer must be logged in to place an order, login button displayed in included
 /*This function gets the packages from the db
 	and displays them on the html page.
 	Only packages past the current date are displayed.
-	Function checks if user is logged in before sending them to payment page
+	Function checks if user is logged in before sending them to booking page
 	through orderButton.php.
 */
 
@@ -57,12 +57,13 @@ function displayPackage(){
 				print("<tr>
 						<td class=\"titleRow\">Package Name</td>
 						<td class=\"titleRow\">Description</td>
-						<td class=\"titleRow\">Departure Date<br>yyyy/mm/dd</td>
-						<td class=\"titleRow\">Return Date<br>yyyy/mm/dd</td>
+						<td class=\"titleRow\">Offer Start Date<br>yyyy/mm/dd</td>
+						<td class=\"titleRow\">Offer End Date<br>yyyy/mm/dd</td>
 						<td class=\"titleRow\">Price</td>
 						<td class=\"titleRow\">
 							<form action=\"orderButton.php\" method=\"POST\">
-								<input type=\"image\" src=\"./images/orderPic.png\" id=\"order\" value=\"".$idResult."\" name=\"order\">
+								<input type=\"hidden\" id=\"order\" value=\"".$idResult."\" name=\"order\">
+								<input type=\"image\" src=\"./images/orderPic.png\" name=\"order\">
 							</form>
 						</td>
 					</tr>");

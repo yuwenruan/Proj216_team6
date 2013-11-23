@@ -8,28 +8,29 @@
 */
 
 var count=0;
+
 		
 		//creates an array of objects to hold info on packages to be displayed
 		var isImageHolder = [
 			{
 				src:"./images/caribbean.png", 
 				hold:"./images/slideHold.png",
-				id: "1"
-				},
-			{
-				src:"./images/chinaVaca.png", 
-				hold:"./images/slideHold.png", 
-				id: "2"
-				},
-			{
-				src:"./images/eurotrav.png",
-				hold:"./images/slideHold.png", 
-				id: "3"
+				id:"1"
 				},
 			{
 				src:"./images/polypara.png", 
 				hold:"./images/slideHold.png",
-				id: "4"
+				id:"2"
+				},
+			{
+				src:"./images/chinaVaca.png", 
+				hold:"./images/slideHold.png", 
+				id:"3"
+				},
+			{
+				src:"./images/eurotrav.png",
+				hold:"./images/slideHold.png", 
+				id:"4"
 				}
 		]	
 		
@@ -59,6 +60,7 @@ var count=0;
 			container.src = holder;
 			
 			loadDesc();
+			buttonValue(i);
 			slideOn.src = "./images/slideOn.png";
 			
 			count = i;
@@ -90,8 +92,8 @@ var count=0;
 		}
 		
 		/*This function sets the value of the order button to be passed based on the image currently displayed.*/
-		function buttonValue(){
-			document.getElementById("order").value = count+1;
+		function buttonValue(i){
+			document.getElementById("order").value = isImageHolder[i].id;
 		}
 		
 		/*Sets up the javascript for the index.php page*/
