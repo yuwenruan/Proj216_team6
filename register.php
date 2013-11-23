@@ -11,7 +11,7 @@ Customer registration Page
 3. password is encrypted using md5 before storing
 4. Mandatory columns (form text elements) validation implemented
 5. session variables 'login' and 'customer' initialized.
-6. On successful registration, if session variable 'order' is set, redirected to payment page
+6. On successful registration, if session variable 'order' is set, redirected to booking page
    otherwise to home (index) page
 /******************************************************************************************
 */
@@ -220,10 +220,10 @@ session_start();
 					$_SESSION["customerId"] = $customerId;
 					
 					// On successful customer registration - 
-					// check if order is placed if so redirect to payment page otherwise to home page
+					// check if order is placed if so redirect to booking page otherwise to home page
 					if(isset($_SESSION["order"]))
 					{
-						header("Location:payment.php");
+						header("Location:booking.php");
 					}
 					else
 					{
