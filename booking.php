@@ -1,9 +1,9 @@
 <!--
 	Author: Yu Wen Ruan & Paul Milligan
 	Course: PROJ216
-	Date: Nov 21, 2013
+	Date: Nov 23, 2013
 	
-	payment.php
+	booking.php
 	This page is arrived at after one of the following:
       -a logged on agent or customer clicks an order button
 	  -a new customer clicks an order button then successfully registers in register.php
@@ -52,9 +52,17 @@
 					  // get customer ID from login or registration
 					if (isset($_SESSION['customerId'])) {
 						$bookings['CustomerId']=$_SESSION['customerId'];
+						$sql="SELECT CustFirstName, CustLastName FROM customers WHERE CustomerId='".$bookings['CustomerId']."';";
+						$result=mysql_query($sql) or die(mysql_error());
+						$row=mysql_fetch_assoc($result);						
+						echo "<tr>";
+						echo "<td>Customer Name:</td>";
+						echo "<td>".$row['CustFirstName']." ".$row['CustLastName']."</td>";
+						echo "</tr>";
+			
 						// get package ID from when order button was clicked
 						if (isset($_SESSION['order'])) {
-							$bookings['PackageId']=$_SESSION['order'];
+							$bookings['PackageId']=$_SESSION['order'];			
 						}
 					}
 				} // if agent is logged in
@@ -73,6 +81,7 @@
 								//Select SQL statement for listing the customers
 								$sql="SELECT CustomerId, CustFirstName, CustLastName FROM customers;";
 								$result=mysql_query($sql) or die(mysql_error());
+								
 								while ($row=mysql_fetch_assoc($result)) {							
 									echo "<option value='".$row['CustomerId']."'>";
 									echo $row['CustFirstName']." ".$row['CustLastName']."</option>";
@@ -80,6 +89,11 @@
 							?>
 						</select>
 					</td>
+				</tr>
+				
+				<tr>
+					<td>Booking Number:	</td>	
+					<td><input type="text" name="bnumber" value="<?php echo $bookings['BookingNo'];?>"/></td>						
 				</tr>
 			<?php			
 					
@@ -120,10 +134,6 @@
 						<td><?=$bookings['BookingDate'];?></td>						
 					</tr>
 					<tr>
-						<td>Booking Number:	</td>	
-						<td><input type="text" name="bnumber" value="<?php echo $bookings['BookingNo'];?>"/></td>						
-					</tr>
-					<tr>
 						<td>Travellers:</td>
 						<td>
 							<select name="travels" value="<?php echo $bookings['TravelerCount']; ?>" > 
@@ -155,19 +165,36 @@
 						</td>
 					</tr>
 					<tr>
-						<td> Package:</td>
+						<td> Package Name:</td>
 						<td>
-							
-							<?php // display the Package name but put package ID in the form
-								$sql="SELECT PkgName FROM packages where PackageId='".$bookings['PackageId']."';";
+							<?php 
+								//show package name
+								$sql="SELECT * FROM packages WHERE PackageId='".$bookings['PackageId']."';";
 								$result=mysql_query($sql) or die(mysql_error());
-								if ($result) {
+								
+								if ($result) 	{
 									$row=mysql_fetch_assoc($result);
-									echo "<input type='hidden' name='package' value='".$bookings['PackageId'] ."' >".$row['PkgName'] ;
-								}
+										echo "<input type='hidden' name='package' value='".$bookings['PackageId'] ."' >".$row['PkgName'] ;
 							?>
 						</td>
+					</tr>	
+					<tr>
+						<td> Package Description:</td>
+						<td><?php echo $row['PkgDesc'];?></td>
+					<tr>
+						<td>Package Price</td>
+						<td><?php echo $row['PkgBasePrice'];?></td>
 					</tr>
+						<?php
+								}
+								else 	{
+									//if package is not available go to the packages.php
+									echo "Package is not available";
+									header("Location: packages.php");
+								}
+								
+						?>
+					
 					
 					<tr>
 					  <td ><input type="submit" name="submit" value="Booking" /></td>
