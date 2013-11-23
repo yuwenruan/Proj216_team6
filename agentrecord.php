@@ -4,7 +4,12 @@
 	Date: Nov 17, 2013
 	
 	agentrecord.php
-	main page to edit,delete add agent 
+	If user is logged in,
+		we arrive this page from agentmanagement.php, when "Edit" or "Add new record" link is clicked.
+		otherwise, we go to login.php;
+	
+		-When "Edit" is clicked, this page will show agent's information for editing
+		-When "Add new record" is clicked, this page show all blank field for add new information
 -->
 <!DOCTYPE html>
 <?php
@@ -226,7 +231,11 @@
 				
 				<?php
 						mysql_close($conn);	
-					}				
+					}
+					//if it is not logged in user, go to index.php
+					else 	{
+						header("Location: login.php");
+					}
 				?>
 			
 			</div>
